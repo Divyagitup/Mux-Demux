@@ -52,14 +52,43 @@ Y0=s1′s0′I <br>
 
 
 ## Program:
-
+~~~
+Multiplexer:
+module exp7a(I0,I1,I2,I3,s1,s0,y);
+input I0,I1,I2,I3,s0,s1;
+output y;
+wire p,q,r,s,s1d,s0d;
+not(s1d,s1);
+not(s0d,s0);
+and(p,s1d,s0d,I0);
+and(q,s1d,s0,I1);
+and(r,s1,s0d,I2);
+and(s,s1,s0,I3);
+or(y,p,q,r,s);
+endmodule
+~~~
+~~~
+Demultiplexer:
+module exp7b(s1,s0,i,y3,y2,y1,y0);
+input s1,s0,i;
+output y3,y2,y1,y0;
+assign y3=(s1&s0&i);
+assign y2=(s1&(~s0)&i);
+assign y1=((~s1)&s0&i);
+assign y0=((~s1)&(~s0)&i);
+endmodule
+~~~
 
 ## RTL Schematic:
+<img width="407" alt="exp7adia" src="https://github.com/Divyagitup/Mux-Demux/assets/134514564/0ee46cf5-2196-4059-ab29-8f92be89acc6">
+<img width="604" alt="exp7b dia" src="https://github.com/Divyagitup/Mux-Demux/assets/134514564/45cd125d-0ba5-479c-9118-deb77f6c68e2">
 
 
 
 
 ## Timing Diagram:
+<img width="865" alt="exp7aout" src="https://github.com/Divyagitup/Mux-Demux/assets/134514564/664d4367-76cc-488a-91cb-2e9825c46875">
+<img width="748" alt="exp7bout" src="https://github.com/Divyagitup/Mux-Demux/assets/134514564/04dc433b-1834-4cc2-8938-25983bc98ff6">
 
 
 
